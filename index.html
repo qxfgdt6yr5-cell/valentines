@@ -1,3 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yes or No Fun</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    transition: background 0.5s;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .heart {
+    position: fixed;
+    animation: float 3s linear forwards;
+    z-index: 9999;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
+
+  #gif {
+    display: block;
+    margin: 30px auto;
+    max-width: 300px;
+  }
+</style>
+</head>
+<body>
+
+<h1 id="question">Would you like to be the artist to my heart another year and agree to be my Valentines?</h1>
+
+<button id="noBtn">No</button>
+<button class="yes" onclick="sayYes()">Yes</button>
+
+<img id="gif" src="" alt="GIF">
+
 <script>
 let noSize = 1;
 let yesSize = 1;
@@ -19,6 +68,10 @@ noBtn.addEventListener("click", function() {
     // Change text as it shrinks
     if (noSize < 0.7) {
         noBtn.innerText = "Are you sure?";
+        
+        // Show begging GIF
+        document.getElementById("gif").src =
+          "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanVqeGg4azU1b3Z3Y3I3anV2M29lNWVmdno3M2kxN2Z4Y3h3bjR5bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/98MaHVwJOmWMz4cz1K/giphy.gif";
     }
     if (noSize < 0.5) {
         noBtn.innerText = "Really?";
@@ -33,14 +86,16 @@ noBtn.addEventListener("click", function() {
 
 function sayYes() {
     document.getElementById("question").innerHTML =
-        "Thank you for making me the happiest man alive!p ❤️🎨";
+        "Let's do that date you've been wanting to do for the longest this Sat. ❤️🎨";
 
+    // Celebration GIF
     document.getElementById("gif").src =
-        "PASTE-CELEBRATION-GIF-LINK-HERE";https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWlsNm1wdjJmaGVja25qeXQ2aTYxN3VsN3Vob3M1amV6bWczdmJnNCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zl7u48zLVFgLpRwq6f/giphy.gif
+        "https://media.tenor.com/images/Y2lkPTc5MGI3NjExbWlsNm1wdjJmaGVja25qeXQ2aTYxN3VsN3Vob3M1amV6bWczdmJnNC/tenor.gif";
 
     document.body.style.background =
         "linear-gradient(135deg, #ff99cc, #ff4d88)";
 
+    // Hearts animation
     for (let i = 0; i < 25; i++) {
         let heart = document.createElement("div");
         heart.classList.add("heart");
@@ -55,3 +110,6 @@ function sayYes() {
     }
 }
 </script>
+
+</body>
+</html>
